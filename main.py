@@ -11,9 +11,9 @@ for p in range(len(config.phone)):
     # 检查token是否失效
     data = get_user_info(config.phone[p], config.token[p], config.cookie[p])
     if data['code'] == 4011 or data['code'] == 4012:
-        title = "Token已失效 - 茅台"
-        desc = "登录账号："+config.phone[p]+"%0D%0A错误代码："+str(data['code'])+"%0D%0A请尽快前往NAS更新Token"
-        requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc + "&url=http://nas.eivo.top:5000")
+        #title = "Token已失效 - 茅台"
+        #desc = "登录账号："+config.phone[p]+"%0D%0A错误代码："+str(data['code'])+"%0D%0A请尽快前往NAS更新Token"
+        #requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc)  #你的webhook连接
         print("token失效")
     else:
 
@@ -51,18 +51,18 @@ for p in range(len(config.phone)):
             for j in itemShopList:
                 data = apply(config.userId[p], j['shopId'], t, config.token[p], config.cookie[p], config.phone[p])
                 if data['code'] == 2000:
-                    title = "申购成功 - 茅台"
-                    desc = "登录账号："+config.phone[p]+"%0D%0A店铺名称：" + j['name'] + "%0D%0A申购项目：" + t + "%0D%0A店铺地址：" + j['address'] + "%0D%0A距离：" + str(j['distance']) + "千米"
-                    requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc + "&url=http://nas.eivo.top:5000")
+                    # title = "申购成功 - 茅台"
+                    # desc = "登录账号："+config.phone[p]+"%0D%0A店铺名称：" + j['name'] + "%0D%0A申购项目：" + t + "%0D%0A店铺地址：" + j['address'] + "%0D%0A距离：" + str(j['distance']) + "千米"
+                    # requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc)  #你的webhook连接
                     print(data)
                     time.sleep(config.sleepTime)
                     break
                 else:
                     jump = jump + 1
                     if jump >= config.applyNum:
-                        title = "申购失败 - 茅台"
-                        desc = "登录账号："+config.phone[p]+"%0D%0A申购项目：" + t + "%0D%0A错误代码：" + str(data['code']) +  "%0D%0A错误信息：" + data['message'] +"%0D%0A点击前往NAS查看"
-                        requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc + "&url=http://nas.eivo.top:5000")
+                        # title = "申购失败 - 茅台"
+                        # desc = "登录账号："+config.phone[p]+"%0D%0A申购项目：" + t + "%0D%0A错误代码：" + str(data['code']) +  "%0D%0A错误信息：" + data['message'] +"%0D%0A点击前往NAS查看"
+                        # requests.get("http://192.168.100.81:82/?title=" + title + "&description=" + desc)  #你的webhook连接
                         print(data)
                         time.sleep(config.sleepTime)
                         break
