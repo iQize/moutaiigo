@@ -7,11 +7,6 @@ sessionId = str(get_session_id())  # 会话ID
 shopAllInfo = get_all_shop_info()  # 所有店铺信息
 
 
-#  明天加入多账号申购
-#  数据存储到Msql数据库或者本地
-#  如果存储本地则另创建一个文件，用于存储用户信息，每次启动程序时读取用户信息，然后进行申购
-
-
 for p in range(len(config.phone)):
     # 检查token是否失效
     data = get_user_info(config.phone[p], config.token[p], config.cookie[p])
